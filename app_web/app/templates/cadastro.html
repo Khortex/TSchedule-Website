@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  </head>
+
+    <body>
+        <BLOCKQUOTE>
+    <form action="/cadastro" method="post" novalidate>
+        {{ form.hidden_tag() }}
+                    <h1 class="texto-escuro">Faça seu Cadastro</h1>
+                    <br>
+                    <div class="form-group">
+
+                        <div class="col-xs-3">
+
+                                <label class="texto-escuro-ns">Nome de Usúario:</label><br>
+
+                                {{ form.username(class_="form-control", placeholder="Nome")}}
+
+                                <label class="texto-escuro-ns">Senha:</label><br>
+
+                                {{ form.password(class_="form-control", placeholder="Senha")}}
+
+                            <br>
+
+                                <button type="submit" class="texto-escuro-ns">Cadastrar</button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+       </form>
+
+       {% for error in form.username.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+       {% for error in form.password.errors %}
+       <span style="color: red;">[{{ error }}]</span>
+       {% endfor %}
+    </BLOCKQUOTE>
+    </body>
+    <style>
+    body {
+    background-image: url("{{ url_for('static', filename='img/registro.png') }}");
+    background-repeat: repeat;
+    background-attachment: fixed;  
+    background-size: cover;
+    }
+
+    </style>
+    </form>
+    
+</div>
+{% endblock %}

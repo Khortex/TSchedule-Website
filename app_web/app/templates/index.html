@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+      {% if current_user.username %}
+        <p class="texto-fonte">Olá, {{current_user.username}}</p>
+      {% endif %}
+
+<style>
+  body {
+    background-image: url("{{ url_for('static', filename='img/T-ScheduleHome.png') }}");
+    background-repeat: repeat;
+    background-attachment: fixed;  
+    background-size: cover;
+    
+}
+</style>
+{% endblock %}
+

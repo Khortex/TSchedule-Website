@@ -1,0 +1,59 @@
+{% extends "base.html" %} 
+
+{% block content %}
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<body>
+
+<div class="w3-sidebar w3-bar-block w3-black w3-xxlarge" style="width:70px">
+  <a href="{{url_for('index')}}" class="w3-bar-item w3-button"><i class="fa fa-home"></i></a> 
+  <a href="https://mail.google.com/mail/u/0/#inbox" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i></a> 
+  <a href="https://www.facebook.com" class="w3-bar-item w3-button"><i class="fa fa-globe"></i></a>
+</div>
+
+<div style="margin-left:75px">
+<div class="w3-container">
+<h2 class="texto-escuro">T-ScheduleBlog</h2>
+<h3 class="texto-escuro">Olá, {{current_user.username}}! Como vai?</h3>
+</div>
+     <script>
+          window.fbAsyncInit = function() {
+            FB.init({
+              appId            : 'T-Schedule',
+              autoLogAppEvents : true,
+              xfbml            : true,
+              version          : 'v10.0'
+            });
+          };
+        </script>
+        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/pt_BR/sdk.js"></script>
+        
+        <div class="fb-comments" data-href="http://127.0.0.1:5000/postagens" data-width="700" data-numposts="10"></div>
+        <script>
+            window.fbAsyncInit = function() {
+              FB.init({
+                appId            : 'T-Schedule',
+                autoLogAppEvents : true,
+                xfbml            : true,
+                version          : 'v10.0'
+              });
+            };
+          </script>
+          <script async defer crossorigin="anonymous" src="https://connect.facebook.net/pt_BR/sdk.js"></script>
+      </body> 
+      <style>
+        body {
+        background-image: url("{{ url_for('static', filename='img/TBlog.png') }}");
+        background-repeat: repeat;
+        background-attachment: fixed;  
+        background-size: cover;
+        }
+    
+        </style>
+</html>
+{% endblock %}
+
+

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    {% if title %}
+    <title>{{ title }} - T-Schedule</title>
+    {% endif %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+        <style>
+
+          p {
+            font-size: 20px;
+            padding-left: 1%;
+            padding-right: 1%;
+        }
+          
+        .texto-fonte{
+            color: rgb(255, 255, 255);
+            font-family: Comfortaa;
+        }
+
+        .texto-rodape{
+            color: rgb(0, 0, 0);
+            font-family: Comfortaa;
+            position: absolute;
+            bottom: 0%;
+            padding-bottom: 1%;
+        }
+
+        .texto-escuro {
+            color: rgba(0, 0, 0, 0.657);
+            font-family: Comfortaa;
+            text-shadow: 2px 2px 4px #313131;
+        }
+
+        .texto-escuro-ns {
+            color: rgba(0, 0, 0, 0.657);
+            font-family: Comfortaa;
+        }
+
+        h1 {
+            text-align: left;
+            font-size: 250%;
+            padding-left: 1%;
+        }
+
+        
+</style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand">T-Schedule</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li>{% if not current_user.username %}
+                <li><a href="{{url_for('index')}}">Home</a></li>
+                <li><a href="{{url_for('login')}}">Login</a></li>
+                <li><a href="{{url_for('cadastro')}}">Cadastro</a>
+                <li><a href="{{url_for('sobre')}}">Sobre</a></li>
+                {% endif %}
+                    
+                {% if current_user.username %}
+                <li style="text-align:Right;"><a href="{{url_for('logout')}}">Logout</a></li>
+                <li><a href="{{url_for('materias')}}">Matérias</a></li>
+                <li><a href="{{url_for('postagens')}}">T-Blog</a></li>
+                <li><a href="{{url_for('sobre')}}">Sobre</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+    <div class="alert alert-danger" role="alert">
+      
+      <ul class=flashes>
+    {% for message in messages %}
+    
+      <li>{{ message }}</li>
+
+        {% endfor %}
+
+      </ul>
+
+        {% endif %}
+
+      {% endwith %}
+
+    </div>
+
+
+          {% block content %} 
+          {% endblock %}
+        
+</body>
+
+</html>
